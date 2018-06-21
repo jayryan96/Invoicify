@@ -1,5 +1,6 @@
 package com.el.ally.invoicify.models;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -40,9 +41,9 @@ public class Invoice {
 
 
 	public Invoice() {
-		
+		long now = Calendar.getInstance().getTimeInMillis();
+		createdOn = new Date(now);
 	}
-
 
 	public Company getCompany() {
 		return company;
