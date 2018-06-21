@@ -11,7 +11,6 @@ public class RateBasedBillingRecord extends BillingRecord {
     
     private double quantity;
     
-    @Column
     private double rate;
     
     public RateBasedBillingRecord() {}
