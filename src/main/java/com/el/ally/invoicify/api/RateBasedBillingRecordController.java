@@ -20,7 +20,8 @@ public class RateBasedBillingRecordController {
 		this.recordRepository = recordRepository;
 		this.companyRepository = companyRepository;
 	}
-
+	public RateBasedBillingRecordController() {}
+	
 	@PostMapping()
 	public RateBasedBillingRecord create(RateBasedBillingRecord record, int companyID) {
 		Company company = companyRepository.findOne(companyID);

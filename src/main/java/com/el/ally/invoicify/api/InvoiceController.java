@@ -34,7 +34,17 @@ public class InvoiceController {
     @Autowired
     private CompanyRepository companyRepository;
     
-    @PostMapping
+    public InvoiceController(BillingRecordRepository recordRepository, InvoiceRepository invoiceRepository,
+			CompanyRepository companyRepository) {
+		this.recordRepository = recordRepository;
+		this.invoiceRepository = invoiceRepository;
+		this.companyRepository = companyRepository;
+	}
+    
+    public InvoiceController() {}
+    
+
+	@PostMapping
     public Invoice createInvoice(@RequestBody InvoiceView invoiceView, @PathVariable int clientId) {
         List<BillingRecord> records = recordRepository.findByIdIn(invoiceView.getRecordIds());
         long nowish = Calendar.getInstance().getTimeInMillis();

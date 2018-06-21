@@ -11,7 +11,8 @@ import javax.persistence.OneToOne;
 @Entity
 public class InvoiceLineItem {
 
-    @Id
+ 
+	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
@@ -22,6 +23,13 @@ public class InvoiceLineItem {
 
     @ManyToOne
     private Invoice invoice;    
+    
+    public InvoiceLineItem(BillingRecord billingRecord, Date createdOn, Invoice invoice) {
+		this.billingRecord = billingRecord;
+		this.createdOn = createdOn;
+		this.invoice = invoice;
+	}
+    public InvoiceLineItem() {}
     
     public Long getId() {
         return id;

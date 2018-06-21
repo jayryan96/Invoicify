@@ -25,11 +25,12 @@ public class FlatFeeBillingRecordController {
 		this.recordRepository = recordRepository;
 		this.companyRepository = companyRepository;
 	}
-
-	@PostMapping("{custId}")
-	public FlatFeeBillingRecord create(@RequestBody FlatFeeBillingRecord record, @PathVariable int custId) {
+	public FlatFeeBillingRecordController() {}
+	
+	@PostMapping("{companyID}")
+	public FlatFeeBillingRecord create(@RequestBody FlatFeeBillingRecord record, @PathVariable int companyID) {
 		
-		Company company = companyRepository.findOne(custId);
+		Company company = companyRepository.findOne(companyID);
 		record.setCompany(company);
 		recordRepository.save(record);
 

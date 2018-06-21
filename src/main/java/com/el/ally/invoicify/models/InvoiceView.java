@@ -10,6 +10,10 @@ public class InvoiceView {
         this.recordIds = recordIds;
     }
 
+    public InvoiceView() {
+    	
+    }
+    
     public String getInvoiceDescription() {
         return invoiceDescription;
     }

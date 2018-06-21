@@ -11,10 +11,10 @@ public class RateBasedBillingRecord extends BillingRecord {
     
     private double quantity;
     
-    @Column(length=75, nullable=false)
+    @Column
     private double rate;
     
-    
+    public RateBasedBillingRecord() {}
     
     public RateBasedBillingRecord(double quantity, double rate, String description, Company company) {
         super(description, company);

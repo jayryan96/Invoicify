@@ -21,7 +21,8 @@ public class BillingRecordController {
 	public BillingRecordController(BillingRecordRepository recordRepository, CompanyRepository companyRepository) {
 		this.billingRecordRepository = recordRepository;
 	}
-
+	public BillingRecordController() {}
+	
 	@GetMapping
 	public List<BillingRecord> list() {
 		return billingRecordRepository.findAll();
