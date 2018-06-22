@@ -6,24 +6,26 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.el.ally.invoicify.models.Company;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="company")
 public class Company {
 
 	@Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private int id;
 	
 	@Column(length=75, nullable=false)
 	private String name;
 	
-	
+	@JsonIgnore
 	@OneToMany(mappedBy="company")
 	private List<Invoice> invoices;
 

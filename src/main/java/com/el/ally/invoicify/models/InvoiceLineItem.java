@@ -8,6 +8,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class InvoiceLineItem {
 
@@ -16,11 +19,13 @@ public class InvoiceLineItem {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
+	@JsonBackReference
     @OneToOne
     private BillingRecord billingRecord;
     
     private Date createdOn;
 
+    @JsonBackReference(value ="secondParent")
     @ManyToOne
     private Invoice invoice;    
     

@@ -5,22 +5,26 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name="billingRecords")
 public abstract class BillingRecord {
 
 	@Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private int id;
 		
 	@ManyToOne
 	private Company company;
 	
+	@JsonManagedReference
 	@OneToOne(mappedBy="billingRecord")
 	private InvoiceLineItem lineItem;
 	
