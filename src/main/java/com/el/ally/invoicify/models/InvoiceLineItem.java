@@ -29,12 +29,22 @@ public class InvoiceLineItem {
     @ManyToOne
     private Invoice invoice;    
     
-    public InvoiceLineItem(BillingRecord billingRecord, Date createdOn, Invoice invoice) {
+    @ManyToOne
+	private User createdBy;
+    
+    public InvoiceLineItem(BillingRecord billingRecord, Date createdOn, Invoice invoice, User createdBy) {
+    	this.createdBy = createdBy;
 		this.billingRecord = billingRecord;
 		this.createdOn = createdOn;
 		this.invoice = invoice;
 	}
-    public InvoiceLineItem() {}
+    public User getCreatedBy() {
+		return createdBy;
+	}
+	public void setCreatedBy(User createdBy) {
+		this.createdBy = createdBy;
+	}
+	public InvoiceLineItem() {}
     
     public Long getId() {
         return id;

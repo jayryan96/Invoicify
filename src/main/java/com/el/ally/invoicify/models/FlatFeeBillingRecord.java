@@ -12,8 +12,8 @@ public class FlatFeeBillingRecord extends BillingRecord {
 	public FlatFeeBillingRecord() {}
 	//default constructor needed to resolve the 404
 	
-	public FlatFeeBillingRecord(double amount, String description, Company company) {
-		super(description, company);
+	public FlatFeeBillingRecord(double amount, String description, Company company, User createdBy) {
+		super(description, company, createdBy);
 		this.amount = amount;
 	}
 	

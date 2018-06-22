@@ -32,15 +32,34 @@ public class Invoice {
 	private Date createdOn;
 	private String invoiceDescription;
 	
+	@ManyToOne
+	private User createdBy;
+	
 	@JsonManagedReference(value="secondParent")
 	@OneToMany(mappedBy="invoice", cascade=CascadeType.ALL)
 	private List<InvoiceLineItem> lineItems;
 
 	
-	public Invoice(Company company, Date createdOn, String invoiceDescription) {
+	public Invoice(Company company, Date createdOn, String invoiceDescription, User createdBy) {
+		this.createdBy = createdBy;
 		this.company = company;
 		this.createdOn = createdOn;
 		this.invoiceDescription = invoiceDescription;
+	}
+
+
+	public User getCreatedBy() {
+		return createdBy;
+	}
+
+
+	public void setCreatedBy(User createdBy) {
+		this.createdBy = createdBy;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 

@@ -28,6 +28,9 @@ public abstract class BillingRecord {
 	@OneToOne(mappedBy="billingRecord")
 	private InvoiceLineItem lineItem;
 	
+	@ManyToOne
+	private User createdBy;
+	
 	private Date createdOn;
 	private String description;
 	
@@ -36,12 +39,21 @@ public abstract class BillingRecord {
 		createdOn = new Date(now);
 	}
 	
-	public BillingRecord(String description, Company company) {
+	public BillingRecord(String description, Company company, User createdBy) {
 		this();
 		this.description = description;
 		this.company = company;
+		this.createdBy = createdBy;
 	}
 	
+	public User getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(User createdBy) {
+		this.createdBy = createdBy;
+	}
+
 	public abstract double getTotal();
 
 	public int getId() {
